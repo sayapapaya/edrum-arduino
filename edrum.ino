@@ -270,6 +270,21 @@ void listening() {
 
 
 ////////////////////////////////////////////
+//Implementing feedback//
+/////////////////////////////////////////////////
+void feedback(){
+  for(int i=0;i<8;i++){
+    if (sensors[i]>threshold[i]){
+      int id = i;
+      int start = millis()-time;
+      String output = "[h:" + String(track1[i]) + "," + String(start) + "]";
+      Serial.println(output);
+    }
+  }
+}
+
+
+
 ////////////////////////////////////////////
 ///// MODE 1: 
 
@@ -392,57 +407,53 @@ void Learn()
 //
 void Play()
 {
-  int Sequence_Length = sizeof(track1) / sizeof(int);
-//  
-//  // change the range of i when the sequence length increases; scroll through hardcoded sequence
-  for(int i=0 ; i < Sequence_Length; i++ ){
-   // led_time = 
-//    
-//    //Turning on LEDs of corresponding drums
-    if (track1[i] > -1)
-    {
-      digitalWrite(LED_G[track1[i]], HIGH);
-    }
-    if(track2[i] > -1)
-    {
-      digitalWrite(LED_G[track2[i]], HIGH);
-    }
-    if(track3[i] > -1)
-    {
-      digitalWrite(LED_G[track3[i]], HIGH);
-    }
-  }
-}
+  boolean songEnd = false;
+  for(int i=0 ; i < length; i++ ){
+      int led_time = (lengths[i]/bpm)*60000;
+ //Turning on LEDs of corresponding drums
+      if (track1[i] > -1)
+      {
+        digitalWrite(LED_G[track1[i]], HIGH);
+      }
+      if(track2[i] > -1)
+      {
+        digitalWrite(LED_G[track2[i]], HIGH);
+      }
+      if(track3[i] > -1)
+      {
+        digitalWrite(LED_G[track3[i]], HIGH);
+      }
+  
+
 //    
 //    //How long LED Stays on
-//    delay(led_time); //This delay would change based on size of note later intialized in an array
+      delay(led_time/2); //This delay would change based on size of note later intialized in an array
 //    
 //    //turning off LEDs
-//    if (RightSeq[i] > -1)
-//    {
-//      digitalWrite(RightLed[RightSeq[i]], LOW);
-//    }
-//    if(LeftSeq[i] > -1)
-//    {
-//      digitalWrite(LeftLed[LeftSeq[i]], LOW);
-//    }
-//    if(FootSeq[i] > -1)
-//    {
-//      digitalWrite(FootLed[FootSeq[i]], LOW);
-//    }
-//    delay(note_delay); // this delay is part of the shared delay; delay between notes
-//  }
-//}  
-//  
+      if (track1[i] > -1)
+      {
+        digitalWrite(LED_G[track1[i]], LOW);
+      }
+      if(track2[i] > -1)
+      {
+       digitalWrite(LED_G[track2[i]], LOW);
+      }
+      if(track3[i] > -1)
+     {
+       digitalWrite(LED_G[track3[i]], LOW);
+     }
+     delay(led_time/2); // this delay is part of the shared delay; delay between notes
+     if(i==length-1){
+       delay(3000);
+       songEnd == true;
+     }
+    }
+    //keep getting feedback till the song ends
+   while(songEnd == false){
+      feedback();
+    }
+  }
 
-//void Piezo_Testing()
-//{
-  //int num = 1;
-  //while (num < 10)
-   // Serial.println(analogRead(sensors[0]));
-    //num = num + 1;
-  //delay(10000); 
-//}
   
 
 ////////////////////////////////////////////

@@ -39,15 +39,14 @@ const int Bass_B = 47;
 
 
 // intializing piezos 
-
-const int Piezo_Crash      = A0;
-const int Piezo_HiHat      = A1;
-const int Piezo_Ride       = A2;
-const int Piezo_LeftTom    = A3;
-const int Piezo_RightTom   = A4;
-const int Piezo_Snare      = A5;
-const int Piezo_FloorTom   = A6;
-const int Piezo_Bass       = A7;
+const int Crash_P    = A0;
+const int HiHat_P    = A1;
+const int Ride_P     = A2;
+const int LeftTom_P  = A3;
+const int RightTom_P = A4;
+const int Snare_P    = A5;
+const int FloorTom_P = A6;
+const int Bass_P     = A7;
 
 int sensorReading0 = 0;
 int sensorReading1 = 0;
@@ -59,21 +58,21 @@ int sensorReading6 = 0;
 int sensorReading7 = 0;
 
 //setting Thresholds (these need to be adjusted when setting up on drums)
-int T_Crash       = 400;
-int T_HiHat       = 400;
-int T_Ride        = 400;
-int T_LeftTom     = 400;
-int T_RightTom    = 400;
-int T_Snare       = 400;
-int T_FloorTom    = 400;
-int T_Bass        = 400;
+int Crash_T    = 400;
+int HiHat_T    = 400;
+int Ride_T     = 400;
+int LeftTom_T  = 400;
+int RightTom_T = 400;
+int Snare_T    = 400;
+int FloorTom_T = 400;
+int Bass_T     = 400;
 
 //MakingArray of outputs
-int sensors[8]   =  {Piezo_Crash,    Piezo_HiHat,    Piezo_Ride,    Piezo_LeftTom,    Piezo_RightTom,    Piezo_Snare,    Piezo_FloorTom,    Piezo_Bass };
-int threshold[8] =  {T_Crash,        T_HiHat,        T_Ride,        T_LeftTom,        T_RightTom,        T_Snare,        T_FloorTom,        T_Bass     };
-int LED_R[8]     =  {Crash_R,        HiHat_R,        Ride_R,        LeftTom_R,        RightTom_R,        Snare_R,        FloorTom_R,        Bass_R     };
-int LED_G[8]     =  {Crash_G,        HiHat_G,        Ride_G,        LeftTom_G,        RightTom_G,        Snare_G,        FloorTom_G,        Bass_G     };
-int LED_B[8]     =  {Crash_B,        HiHat_B,        Ride_B,        LeftTom_B,        RightTom_B,        Snare_B,        FloorTom_B,        Bass_B     };
+int sensors[8]   = {Crash_P, HiHat_P, Ride_P, LeftTom_P, RightTom_P, Snare_P, FloorTom_P, Bass_P};
+int threshold[8] = {Crash_T, HiHat_T, Ride_T, LeftTom_T, RightTom_T, Snare_T, FloorTom_T, Bass_T};
+int LED_R[8]     = {Crash_R, HiHat_R, Ride_R, LeftTom_R, RightTom_R, Snare_R, FloorTom_R, Bass_R};
+int LED_G[8]     = {Crash_G, HiHat_G, Ride_G, LeftTom_G, RightTom_G, Snare_G, FloorTom_G, Bass_G};
+int LED_B[8]     = {Crash_B, HiHat_B, Ride_B, LeftTom_B, RightTom_B, Snare_B, FloorTom_B, Bass_B};
 
 //stuff from parser
 boolean sequenceReceived = false;

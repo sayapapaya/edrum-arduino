@@ -289,7 +289,7 @@ void Learn()
     // light up correct drums to be played  
     if(track1[i] > -1)
     {
-      digitalWrite(LED_G[track1[i]], HIGH);
+      digitalWrite(LED_R[track1[i]], HIGH);
       hit_0 = 1;
 //      Serial.print(" ");
 //      Serial.print(track1[i]);
@@ -305,7 +305,7 @@ void Learn()
     
     if(track3[i] > -1)
     {
-      digitalWrite(LED_G[track3[i]], HIGH);
+      digitalWrite(LED_B[track3[i]], HIGH);
       hit_2 = 1;
 //      Serial.print(" ");
 //      Serial.println(track3[i]);

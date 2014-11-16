@@ -274,7 +274,7 @@ void listening() {
 /////////////////////////////////////////////////
 void feedback(){
   for(int i=0;i<8;i++){
-    if (sensors[i]>threshold[i]){
+    if (analogRead(sensors[i])>threshold[i]){
       int id = i;
       int start = millis()-time;
       String output = "[h:" + String(track1[i]) + "," + String(start) + "]";
